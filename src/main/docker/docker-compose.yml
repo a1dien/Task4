@@ -1,0 +1,33 @@
+#version: "2"
+#services:
+#  app:
+#    image: 'app:task4'
+#    build:
+#      context: .
+#    container_name: task4
+#    depends_on:
+#      - db
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/task4db
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=postgres
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#    ports:
+#      - "8080:8080"
+#  db:
+#    image: postgres:latest
+#    container_name: db
+#    environment:
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+
+version: '3.5'
+services:
+  db_auth:
+    container_name: task4
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    image: postgres:12.19-alpine3.20
